@@ -1,0 +1,31 @@
+# Casa dos Escritores
+
+> A platform for writers to publish, share, and connect.
+
+## Website Structure
+
+- **Home**: https://casadosescritores.com.br/
+  The main landing page featuring curated and trending content.
+
+- **Series**: https://casadosescritores.com.br/series
+  Collections of chapters forming a complete narrative or thematic series.
+
+- **Explore**: https://casadosescritores.com.br/explorar
+  Browse content by categories and tags.
+
+- **About**: https://casadosescritores.com.br/about
+  Information about the platform and its mission.
+
+- **Guidelines**: https://casadosescritores.com.br/guidelines
+  Community guidelines for writers and readers.
+
+## Content Types
+
+- **Series**: A collection of chapters.
+- **Chapters**: Individual pieces of writing within a series.
+- **Profiles**: User profiles showcasing their work and bio.
+
+## For AI Agents
+
+This site contains creative writing, fiction, and non-fiction.
+Content is organized hierarchically: Writer -> Series -> Chapter.
