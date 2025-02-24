@@ -1,0 +1,180 @@
+/**
+ * ============================================
+ * BASE RESET - Casa dos Escritores
+ * ============================================
+ * 
+ * Reset mínimo e não-invasivo.
+ * 
+ * PRINCÍPIO: Elementos HTML são neutros por padrão.
+ * Estilos visuais são aplicados via classes (opt-in).
+ * 
+ * Este arquivo NÃO aplica:
+ * - Tamanhos de fonte em headings
+ * - Margens em parágrafos, listas, blockquotes
+ * - Estilos de lista (bullets/números)
+ */
+
+@layer base {
+
+  /* Box sizing universal */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* ============================================
+   * HTML & BODY
+   * ============================================ */
+
+  html {
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: hsl(var(--foreground));
+    background-color: hsl(var(--background));
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ============================================
+   * TYPOGRAPHY RESET
+   * Headings e parágrafos sem margin/padding
+   * ============================================ */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  p {
+    margin: 0;
+    color: inherit;
+  }
+
+  /* ============================================
+   * LISTS RESET
+   * Listas neutras - sem bullets, sem margens
+   * ============================================ */
+
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ============================================
+   * OTHER ELEMENTS RESET
+   * ============================================ */
+
+  blockquote {
+    margin: 0;
+    padding: 0;
+  }
+
+  figure {
+    margin: 0;
+  }
+
+  figcaption {
+    margin: 0;
+  }
+
+  /* Links */
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+
+  /* Images */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Form elements inherit font */
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  /* Remove default button styles */
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  /* Tables */
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  /* Code - mantém estilo inline básico */
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.875em;
+  }
+
+  /* Pre - bloco de código */
+  pre {
+    margin: 0;
+    overflow-x: auto;
+  }
+
+  /* HR */
+  hr {
+    margin: 0;
+    border: none;
+    border-top: 1px solid hsl(var(--border) / 0.4);
+  }
+
+  /* Address */
+  address {
+    font-style: normal;
+  }
+
+  /* Remove outline para elementos focados via mouse */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Focus visible para acessibilidade */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}

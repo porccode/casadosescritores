@@ -1,0 +1,593 @@
+/**
+ * ============================================
+ * UTILITIES - Casa dos Escritores
+ * ============================================
+ * 
+ * Classes opt-in que aplicam estilos APENAS quando usadas.
+ * 
+ * Organização:
+ * 1. Typography (headings, text utilities)
+ * 2. Prose (conteúdo de leitura)
+ * 3. Layout (stack, section, wrapper)
+ * 4. Cards (interactive, pinned, premium)
+ * 5. Editor (labels, stats)
+ * 6. Miscellaneous (username, raw-content)
+ * 7. Animations
+ * 8. Mobile Overrides
+ */
+
+@layer components {
+  /* ============================================
+   * 1. TYPOGRAPHY - Headings Opt-in
+   * ============================================
+   * Use estas classes para aplicar estilos de heading.
+   * Elementos h1-h4 sem classe são neutros.
+   */
+
+  .heading-1 {
+    @apply scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-5xl;
+  }
+
+  .heading-2 {
+    @apply scroll-m-20 text-2xl font-semibold tracking-tight lg:text-3xl;
+  }
+
+  .heading-3 {
+    @apply scroll-m-20 text-xl font-semibold tracking-tight lg:text-2xl;
+  }
+
+  .heading-4 {
+    @apply scroll-m-20 text-lg font-semibold tracking-tight lg:text-xl;
+  }
+
+  /* Aliases para compatibilidade (Shadcn naming) */
+  .h1 {
+    @apply heading-1;
+  }
+
+  .h2 {
+    @apply heading-2;
+  }
+
+  .h3 {
+    @apply heading-3;
+  }
+
+  .h4 {
+    @apply heading-4;
+  }
+
+  /* ============================================
+   * Typography Utilities
+   * ============================================ */
+
+  .text-lead {
+    @apply text-xl text-muted-foreground;
+  }
+
+  .text-large {
+    @apply text-lg font-semibold;
+  }
+
+  .text-small {
+    @apply text-sm font-medium leading-none;
+  }
+
+  .text-muted {
+    @apply text-sm text-muted-foreground;
+  }
+
+  /* Paragraph utility - para quando quiser margens automáticas */
+  .p {
+    @apply leading-7;
+  }
+
+  .p:not(:first-child) {
+    @apply mt-6;
+  }
+
+  /* Blockquote utility */
+  .blockquote {
+    @apply mt-6 border-l-2 border-border pl-6 italic;
+  }
+
+  /* List utility - aplica bullets e margens */
+  .list {
+    @apply my-6 ml-6 list-disc;
+  }
+
+  .list>li {
+    @apply mt-2;
+  }
+
+  /* Tabular numbers */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Sentence case */
+  .text-sentence {
+    text-transform: lowercase;
+    display: inline-block;
+  }
+
+  .text-sentence::first-letter {
+    text-transform: uppercase;
+  }
+
+  /* ============================================
+   * 2. PROSE - Conteúdo de Leitura
+   * ============================================
+   * Use .prose como wrapper para conteúdo long-form
+   * (capítulos, posts, artigos).
+   * 
+   * Dentro de .prose, headings, parágrafos e listas
+   * ganham estilos automáticos.
+   */
+
+  .prose {
+    @apply text-foreground leading-relaxed;
+  }
+
+  .prose h1 {
+    @apply heading-1 mb-6 mt-8;
+  }
+
+  .prose h1:first-child {
+    @apply mt-0;
+  }
+
+  .prose h2 {
+    @apply heading-2 mb-4 mt-8;
+  }
+
+  .prose h2:first-child {
+    @apply mt-0;
+  }
+
+  .prose h3 {
+    @apply heading-3 mb-3 mt-6;
+  }
+
+  .prose h3:first-child {
+    @apply mt-0;
+  }
+
+  .prose h4 {
+    @apply heading-4 mb-2 mt-4;
+  }
+
+  .prose p {
+    @apply leading-7 mt-4;
+  }
+
+  .prose p:first-child {
+    @apply mt-0;
+  }
+
+  .prose ul {
+    @apply my-4 ml-6 list-disc;
+  }
+
+  .prose ul li {
+    @apply mt-2;
+  }
+
+  .prose ol {
+    @apply my-4 ml-6 list-decimal;
+  }
+
+  .prose ol li {
+    @apply mt-2;
+  }
+
+  .prose blockquote {
+    @apply my-6 border-l-2 border-border pl-6 italic text-muted-foreground;
+  }
+
+  .prose code {
+    @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+  }
+
+  .prose pre {
+    @apply my-4 overflow-x-auto rounded-lg bg-muted p-4;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .prose a {
+    @apply text-primary font-medium underline underline-offset-4 hover:text-primary/80;
+  }
+
+  .prose img {
+    @apply max-w-full h-auto rounded-lg;
+  }
+
+  /* Enforce scaled width from editor */
+  .prose .float-left img,
+  .prose .float-right img,
+  .prose .mx-auto img {
+    @apply w-full block;
+  }
+
+  .prose figure {
+    @apply my-10 mx-0;
+  }
+
+  /* Harmonized Alignment Utilities */
+  .prose .float-left {
+    @apply float-left mr-8 my-6 mb-8;
+  }
+
+  .prose .float-right {
+    @apply float-right ml-8 my-6 mb-8;
+  }
+
+  .prose .mx-auto {
+    @apply mx-auto block my-12;
+  }
+
+  .prose strong {
+    @apply font-semibold text-foreground;
+  }
+
+  .prose hr {
+    @apply my-8;
+    border: none;
+    border-top: 1px solid hsl(var(--border) / 0.4);
+  }
+
+  /* ============================================
+   * 3. LAYOUT UTILITIES
+   * ============================================ */
+
+  /* Stack patterns - vertical layout com gap */
+  .stack-xs {
+    @apply flex flex-col gap-2;
+  }
+
+  .stack-sm {
+    @apply flex flex-col gap-4;
+  }
+
+  .stack-md {
+    @apply flex flex-col gap-6;
+  }
+
+  .stack-lg {
+    @apply flex flex-col gap-8;
+  }
+
+  .stack-xl {
+    @apply flex flex-col gap-12;
+  }
+
+  /* Section patterns - MOVED TO globals.css */
+  /* Use: .section-xs, .section-sm, .section, .section-md, .section-lg */
+
+  /* Content wrapper - max-width centered */
+  .content-wrapper {
+    width: 100%;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* ============================================
+   * LAYOUT & ALIGNMENT UTILITIES
+   * ============================================
+   * Classes para suporte ao editor em modo de leitura
+   */
+
+  .float-left {
+    float: left;
+  }
+
+  .float-right {
+    float: right;
+  }
+
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .block {
+    display: block;
+  }
+
+  .mr-4 {
+    margin-right: 1.5rem;
+  }
+
+  .mr-6 {
+    margin-right: 2rem;
+  }
+
+  .ml-4 {
+    margin-left: 1.5rem;
+  }
+
+  .ml-6 {
+    margin-left: 2rem;
+  }
+
+  .my-2 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .my-4 {
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .my-8 {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .mb-4 {
+    margin-bottom: 1.25rem;
+  }
+
+  .mt-4 {
+    margin-top: 1.25rem;
+  }
+
+  .rounded-[10px] {
+    border-radius: 10px;
+  }
+
+  .w-full {
+    width: 100%;
+  }
+
+  /* ============================================
+   * 4. CARD UTILITIES
+   * ============================================ */
+
+  /* Interactive card - clickable with hover */
+  .card-interactive {
+    cursor: pointer;
+    transition: background-color 200ms ease;
+  }
+
+  .card-interactive:hover {
+    background-color: hsl(var(--accent));
+  }
+
+  /* Standard card title */
+  .card-title-standard {
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    color: hsl(var(--foreground));
+  }
+
+  /* Card metrics - icon + number */
+  .card-metric {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: hsl(var(--primary));
+  }
+
+  .card-metric svg {
+    color: hsl(var(--primary));
+  }
+
+  /* Pinned Card - announcements */
+  .card-pinned {
+    background-color: hsl(var(--primary)) !important;
+    color: hsl(var(--primary-foreground)) !important;
+    border-color: hsl(var(--primary)) !important;
+    transition: all 0.3s ease-in-out !important;
+    box-shadow: 0 4px 6px -1px rgba(72, 77, 181, 0.1), 0 2px 4px -1px rgba(72, 77, 181, 0.06);
+  }
+
+  .card-pinned:hover {
+    background-color: hsl(var(--primary) / 0.9) !important;
+    box-shadow: 0 12px 20px -8px rgba(72, 77, 181, 0.3);
+  }
+
+  .card-pinned h1,
+  .card-pinned h2,
+  .card-pinned h3,
+  .card-pinned h4,
+  .card-pinned p,
+  .card-pinned span,
+  .card-pinned svg {
+    color: hsl(var(--primary-foreground)) !important;
+  }
+
+  .card-pinned .username,
+  .card-pinned .username-link {
+    color: hsl(var(--primary-foreground)) !important;
+    opacity: 1 !important;
+    text-decoration: none !important;
+  }
+
+  /* Premium Card Tokens */
+  .card-label-premium {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: hsl(var(--primary));
+    line-height: 1;
+  }
+
+  .card-title-premium {
+    font-size: 1rem;
+    font-weight: 700;
+    color: hsl(var(--foreground));
+    line-height: 1.25;
+  }
+
+  .card-meta-premium {
+    font-size: 10px;
+    color: hsl(var(--muted-foreground));
+    line-height: 1;
+  }
+
+  /* Modal list item */
+  .modal-list-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  /* ============================================
+   * 5. EDITOR UTILITIES
+   * ============================================ */
+
+  .editor-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .editor-stat {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: hsl(var(--foreground));
+  }
+
+  /* ============================================
+   * 6. MISCELLANEOUS
+   * ============================================ */
+
+  /* Username styling */
+  .username-link,
+  .username {
+    font-weight: 600;
+    color: hsl(var(--primary));
+    text-transform: lowercase !important;
+  }
+
+  /* Raw content - preserva formatação original */
+  .raw-content {
+    text-transform: none !important;
+  }
+
+  /* Info Block Styling - #484DB5 background with white text */
+  .info-block {
+    background-color: #484DB5;
+    color: #ffffff;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.625;
+  }
+
+  .info-block p {
+    margin-bottom: 1rem;
+    color: inherit;
+  }
+
+  .info-block p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Editor specific tweak to match viewer */
+  .info-block-editor {
+    background-color: #484DB5;
+    color: #ffffff;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+    min-height: 50px;
+    font-size: 0.875rem;
+    line-height: 1.625;
+  }
+
+  .info-block-editor p {
+    margin-bottom: 1rem;
+    color: inherit;
+  }
+
+  .info-block-editor p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ============================================
+   * 7. ANIMATIONS
+   * ============================================ */
+
+  @keyframes reveal-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-reveal {
+    animation: reveal-fade-in 0.5s ease-out forwards;
+  }
+}
+
+/* ============================================
+ * 8. MOBILE OVERRIDES
+ * ============================================
+ * Ajustes responsivos centralizados.
+ * Usa media queries fora do @layer para garantir
+ * especificidade correta.
+ */
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .heading-1,
+  .h1 {
+    font-size: 1.875rem;
+    /* text-3xl */
+  }
+
+  .heading-2,
+  .h2 {
+    font-size: 1.5rem;
+    /* text-2xl */
+  }
+
+  .prose h1 {
+    font-size: 1.875rem;
+  }
+
+  .prose h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-wrapper {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .heading-1,
+  .h1 {
+    font-size: 1.5rem;
+    /* text-2xl */
+  }
+
+  .prose h1 {
+    font-size: 1.5rem;
+  }
+}
