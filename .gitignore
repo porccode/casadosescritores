@@ -68,3 +68,8 @@ localhost-*.pem
 scratch/*.html
 scratch/*.log
 .env*
+
+# Internal agent and scratch files
+.agent/
+scratch/
+comunicado_novidades.txt
