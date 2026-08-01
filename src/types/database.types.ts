@@ -1128,8 +1128,6 @@ export type Database = {
           remind_email_sent_at: string | null
           returned_after_reengage_at: string | null
           role: string
-          stripe_customer_id: string | null
-          stripe_subscription_id: string | null
           subscription_plan: string | null
           subscription_status: string | null
           twitter_url: string | null
@@ -1172,8 +1170,6 @@ export type Database = {
           remind_email_sent_at?: string | null
           returned_after_reengage_at?: string | null
           role?: string
-          stripe_customer_id?: string | null
-          stripe_subscription_id?: string | null
           subscription_plan?: string | null
           subscription_status?: string | null
           twitter_url?: string | null
@@ -1216,8 +1212,6 @@ export type Database = {
           remind_email_sent_at?: string | null
           returned_after_reengage_at?: string | null
           role?: string
-          stripe_customer_id?: string | null
-          stripe_subscription_id?: string | null
           subscription_plan?: string | null
           subscription_status?: string | null
           twitter_url?: string | null

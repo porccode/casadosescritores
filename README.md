@@ -1,6 +1,6 @@
 # Casa dos Escritores — Documentação Técnica & Guia de Arquitetura
 
-> **REPOSITÓRIO PRIVADO**: Este documento é um manual de referência técnica exaustivo. Ele descreve a arquitetura, o Design System, a pilha de tecnologias, o mapeamento completo de rotas e o propósito exato de **todos os arquivos** presentes no projeto.
+> Este documento é um manual de referência técnica exaustivo. Ele descreve a arquitetura, o Design System, a pilha de tecnologias, o mapeamento completo de rotas e o propósito exato de **todos os arquivos** presentes no projeto.
 
 ---
 
@@ -35,7 +35,6 @@ A **Casa dos Escritores** é uma plataforma literária moderna voltada para auto
 * **Ícones & Animações**: Lucide React Icons (`lucide-react`) e Framer Motion (`framer-motion`).
 * **Editor de Texto Rico**: Tiptap v3 (`@tiptap/react` e `@tiptap/starter-kit`) com extensões personalizadas.
 * **Banco de Dados & Autenticação**: [Supabase](https://supabase.com/) (PostgreSQL, Supabase Auth SSR, RLS, Storage e Triggers).
-* **Pagamentos & Assinaturas**: Stripe SDK (`@stripe/stripe-js` e `stripe`).
 * **Testes Automatizados**: Vitest e React Testing Library.
 
 ---
@@ -101,7 +100,7 @@ Nesta seção, **todos os arquivos** do repositório estão listados e detalhado
 
 ### 4.1 Configurações e Raiz do Projeto
 
-* `.env.local`: Arquivo local de variáveis de ambiente (chaves do Supabase, Stripe e URLs).
+* `.env.local`: Arquivo local de variáveis de ambiente (chaves do Supabase e URLs da aplicação).
 * `.gitignore`: Define quais arquivos e diretórios são ignorados pelo controle de versão Git.
 * `components.json`: Configuração da CLI do Shadcn UI (diretórios de componentes, estilos e aliases).
 * `eslint.config.mjs`: Configuração do linter ESLint para o Next.js 16.
